@@ -3,15 +3,25 @@ DROP TABLE IF EXISTS sectoren;
 DROP TABLE IF EXISTS restaurants;
 
 CREATE TABLE winkelgebieden (
-    id BIGINT PRIMARY KEY NOT NULL,
+    id BIGINT PRIMARY KEY,
     naam VARCHAR(100),
     subcentrum VARCHAR(100)
 );
 
+CREATE UNIQUE INDEX ui_winkelgebieden ON winkelgebieden (
+    naam,
+    subcentrum
+);
+
 CREATE TABLE sectoren (
-    id BIGINT PRIMARY KEY NOT NULL,
+    id BIGINT PRIMARY KEY,
     code VARCHAR(25),
     naam VARCHAR(50)
+);
+
+CREATE UNIQUE INDEX ui_sectoren ON sectoren (
+    code,
+    naam
 );
 
 CREATE TABLE restaurants (
